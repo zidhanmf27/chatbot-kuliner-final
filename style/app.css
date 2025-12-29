@@ -1,0 +1,875 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Variabel CSS - Tema Premium Dark Blue */
+:root {
+  --bg-primary: #02040a;
+  --bg-secondary: #0a0e17;
+  --card-bg: rgba(15, 19, 34, 0.8);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-glow: rgba(59, 130, 246, 0.5);
+  --border-color: #1e293b;
+  --input-bg: #0f172a;
+  --success: #10b981;
+}
+
+/* Variabel CSS - Tema Light Mode */
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --accent-blue: #2563eb;
+  --accent-purple: #7c3aed;
+  --accent-glow: rgba(37, 99, 235, 0.3);
+  --border-color: #e2e8f0;
+  --input-bg: #f1f5f9;
+  --success: #059669;
+}
+
+
+/* Gaya Global */
+.stApp {
+  background-color: var(--bg-primary);
+  background-image: radial-gradient(
+      at 0% 0%,
+      rgba(59, 130, 246, 0.05) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Background untuk Light Mode */
+[data-theme="light"] .stApp {
+  background-image: radial-gradient(
+      at 0% 0%,
+      rgba(59, 130, 246, 0.08) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
+}
+
+
+/* --- Penataan Sidebar --- */
+section[data-testid="stSidebar"] {
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+}
+
+section[data-testid="stSidebar"] .block-container {
+  padding-top: 1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.sidebar-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.8;
+}
+
+.sidebar-cat-list {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+  padding: 0 0.25rem;
+}
+
+.sidebar-cat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+/* Kartu Data Sistem di Sidebar */
+.data-system-card {
+  background: #111526;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.data-system-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.stat-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--success);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--success);
+}
+
+/* Kartu Tips di Sidebar */
+.tips-card {
+  background: rgba(30, 41, 59, 0.15);
+  border-radius: 10px;
+  padding: 0.85rem;
+  margin-top: 2rem;
+  border: 1px dashed var(--border-color);
+}
+
+.tips-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tips-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.tips-list li {
+  margin-bottom: 0.25rem;
+}
+
+
+#MainMenu {
+  visibility: hidden;
+}
+header {
+  visibility: hidden;
+}
+footer {
+  visibility: hidden;
+}
+.stDeployButton {
+  display: none;
+}
+
+/* SEMBUNYIKAN TAUTAN ANCHOR */
+.stMarkdown h1 a,
+.stMarkdown h2 a,
+.stMarkdown h3 a,
+.stMarkdown h4 a {
+  display: none;
+}
+
+/* --- Styling Expander Sidebar (Pengganti Header Statis) --- */
+/* Target elemen summary (header) dari expander */
+section[data-testid="stSidebar"] [data-testid="stExpander"] summary {
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: var(--text-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  padding-left: 0.5rem !important; /* Beri jarak sedikit dari kiri */
+}
+
+
+/* Hover state untuk header expander */
+section[data-testid="stSidebar"] [data-testid="stExpander"] summary:hover {
+  color: var(--text-primary) !important;
+  cursor: pointer;
+}
+
+/* Ikon chevron (panah) */
+section[data-testid="stSidebar"] [data-testid="stExpander"] summary svg {
+  color: var(--text-secondary) !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* Konten di dalam expander */
+section[data-testid="stSidebar"] [data-testid="stExpander"] [data-testid="stExpanderDetails"] {
+  border: none !important; /* Hapus border kotak */
+}
+
+/* Styling Expandernya sendiri (kontainer) */
+section[data-testid="stSidebar"] [data-testid="stExpander"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 0.5rem !important;
+}
+
+
+/* --- Penataan Bagian Hero --- */
+.hero-container {
+  text-align: center;
+  padding: 1.5rem 1rem 1rem;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #1e293b 0%, #020617 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem auto;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+.hero-icon i {
+  font-size: 1.75rem;
+  color: #3b82f6;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.04em;
+}
+
+.hero-title-blue {
+  background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Kontainer Kotak Pencarian */
+[data-testid="stForm"] {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.75rem 2.25rem;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  max-width: 820px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.form-header {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bot-avatar {
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #7e22ce 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+}
+
+.form-title-group h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary) !important;
+}
+
+.form-title-group p {
+  font-size: 0.8rem;
+  margin: 0rem;
+  color: var(--text-secondary) !important;
+}
+
+
+.stTextInput input {
+  background-color: var(--input-bg);
+  border: 1px solid #1e293b !important; /* Gunakan border gelap solid (Dark Slate) untuk menghilangkan kesan putih */
+  border-radius: 10px;
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  height: 4rem;
+  caret-color: white !important; /* Warna kursor ketik putih di dark mode */
+}
+
+
+/* Placeholder Styling Global (Dark Mode Default) */
+.stTextInput input::placeholder {
+  color: #94a3b8 !important; /* Warna Slate-400 */
+  opacity: 1;
+}
+
+.stTextInput input::-webkit-input-placeholder {
+  color: #94a3b8 !important;
+}
+
+
+/* Perbaiki Garis Merah (Aksen Default Streamlit) */
+[data-testid="textInputRootElement"] {
+  border-color: transparent !important;
+  border: none !important;
+}
+
+[data-testid="textInputRootElement"]:focus-within {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+/* Target stNotification (seperti pesan error/info) untuk menghapus garis merah */
+div[data-testid="stNotification"], .st-di {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+/* --- Penataan Radio Button --- */
+/* Radio button label text - lebih spesifik untuk override Streamlit default */
+section[data-testid="stSidebar"] .stRadio label p {
+  color: var(--text-primary) !important;
+}
+
+section[data-testid="stSidebar"] .stRadio > label {
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+}
+
+/* Radio button options - target semua paragraf di dalam radiogroup */
+section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] label p {
+  color: var(--text-primary) !important;
+}
+
+section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] label {
+  color: var(--text-primary) !important;
+}
+
+/* Target class spesifik Streamlit untuk radio button */
+section[data-testid="stSidebar"] .st-ae p {
+  color: var(--text-primary) !important;
+}
+
+section[data-testid="stSidebar"] label[data-baseweb="radio"] p {
+  color: var(--text-primary) !important;
+}
+
+/* Override Khusus untuk Light Mode agar Text Menjadi Gelap */
+[data-theme="light"] section[data-testid="stSidebar"] .stRadio label p,
+[data-theme="light"] section[data-testid="stSidebar"] .st-ae p,
+[data-theme="light"] section[data-testid="stSidebar"] label[data-baseweb="radio"] p,
+[data-theme="light"] section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] label p {
+  color: #0f172a !important; /* Memaksa warna gelap di light mode */
+}
+
+
+
+/* --- Penataan Tombol (Kustom per Kontainer) --- */
+/* Dasar Tombol Global */
+.stButton button {
+  border: none !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  border-radius: 10px !important;
+  height: 3rem !important;
+  margin-top: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  color: white !important;
+}
+
+/* 1. Tombol Kirim (Biru) */
+div[data-testid="element-container"]:has(.kirim-container) + div[data-testid="element-container"] .stButton button {
+  background: rgb(136, 151, 250) !important;
+  box-shadow: 0 4px 12px rgba(136, 151, 250, 0.3) !important;
+}
+div[data-testid="element-container"]:has(.kirim-container) + div[data-testid="element-container"] .stButton button:hover {
+  background: rgb(110, 128, 245) !important;
+  box-shadow: 0 6px 16px rgba(136, 151, 250, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+div[data-testid="element-container"]:has(.kirim-container) + div[data-testid="element-container"] .stButton button::before {
+  content: "\f1d8";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+/* 2. Tombol Cari (Biru - Sama seperti Kirim) */
+/* Menargetkan tombol pencarian bawah dan sekunder */
+div[data-testid="element-container"]:has(.cari-container) + div[data-testid="element-container"] .stButton button,
+.bottom-search-wrapper .stButton button {
+  background: rgb(136, 151, 250) !important;
+  box-shadow: 0 4px 12px rgba(136, 151, 250, 0.3) !important;
+  color: white !important;
+}
+
+div[data-testid="element-container"]:has(.cari-container) + div[data-testid="element-container"] .stButton button:hover,
+.bottom-search-wrapper .stButton button:hover {
+  background: rgb(110, 128, 245) !important;
+  box-shadow: 0 6px 16px rgba(136, 151, 250, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+div[data-testid="element-container"]:has(.cari-container) + div[data-testid="element-container"] .stButton button::before,
+.bottom-search-wrapper .stButton button::before {
+  content: "\f002";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+/* 3. Tombol Hapus (Merah) */
+div[data-testid="element-container"]:has(.hapus-container) + div[data-testid="element-container"] .stButton button {
+  background: #ef4444 !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+}
+div[data-testid="element-container"]:has(.hapus-container) + div[data-testid="element-container"] .stButton button:hover {
+  background: #dc2626 !important;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+div[data-testid="element-container"]:has(.hapus-container) + div[data-testid="element-container"] .stButton button::before {
+  content: "\f1f8";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+/* 4. Tombol Pencarian Cepat (Bentuk Pil) */
+div[data-testid="element-container"]:has(.quick-search-container) + div[data-testid="stHorizontalBlock"] .stButton button {
+  background-color: rgba(30, 41, 59, 1) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 100px !important;
+  font-weight: 600 !important;
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.7rem !important;
+  transition: all 0.3s ease !important;
+  min-height: 2.2rem !important;
+  width: 100% !important;
+  white-space: nowrap !important;
+}
+
+div[data-testid="element-container"]:has(.quick-search-container) + div[data-testid="stHorizontalBlock"] .stButton button:hover {
+  background-color: rgba(59, 130, 246, 0.3) !important;
+  border-color: var(--accent-blue) !important;
+  color: white !important;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 5. Tombol Lebih Banyak (Load More) */
+div[data-testid="element-container"]:has(.load-more-wrapper) + div[data-testid="element-container"] {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+div[data-testid="element-container"]:has(.load-more-wrapper) + div[data-testid="element-container"] .stButton {
+  width: 95% !important;
+  max-width: 820px !important;
+}
+
+div[data-testid="element-container"]:has(.load-more-wrapper) + div[data-testid="element-container"] .stButton button {
+  background: rgba(30, 41, 59, 0.6) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.3s ease !important;
+}
+
+div[data-testid="element-container"]:has(.load-more-wrapper) + div[data-testid="element-container"] .stButton button:hover {
+  background: rgba(59, 130, 246, 0.2) !important;
+  border-color: var(--accent-blue) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2) !important;
+}
+
+/* Target kelas caching spesifik jika mereka membutuhkan override tombol */
+.st-emotion-cache-1n9qh9a {
+  background: rgb(136, 151, 250) !important;
+  box-shadow: 0 4px 12px rgba(136, 151, 250, 0.3) !important;
+  color: white !important;
+}
+.st-emotion-cache-1n9qh9a:hover {
+   background: rgb(110, 128, 245) !important;
+}
+
+div[data-testid="column"] > div[data-testid="stVerticalBlock"] {
+  gap: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Pembantu untuk menyembunyikan kontainer kosong yang menyebabkan whitespace */
+div[data-testid="element-container"]:has(.cari-container-bottom),
+.cari-container-bottom {
+  display: none !important;
+  margin-bottom: -1rem !important;
+}
+
+/* Tata Letak Spesifik Pencarian Bawah */
+/* Pembungkus Pencarian Bawah - Perbaikan perataan agresif */
+.bottom-search-wrapper [data-testid="stForm"] {
+  padding: 1.25rem 2.25rem !important;
+  max-width: 820px !important;
+}
+
+.bottom-search-wrapper div[data-testid="stHorizontalBlock"] {
+  align-items: flex-start !important; /* Permintaan pengguna "mentok ke atas" */
+}
+
+/* Reset perataan kolom ke default untuk memungkinkan flex-start bekerja */
+.bottom-search-wrapper div[data-testid="column"] {
+  display: block !important;
+  justify-content: flex-start !important;
+}
+
+.bottom-search-wrapper .stTextInput,
+.bottom-search-wrapper .stButton,
+.bottom-search-wrapper div[data-testid="element-container"],
+.bottom-search-wrapper div[data-testid="stFormSubmitButton"] {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.bottom-search-wrapper .stButton button {
+  width: 100% !important; /* Kembalikan lebar penuh */
+  height: 3rem !important;
+  min-height: 3rem !important;
+  line-height: normal !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Header Pencarian Cepat */
+.pencarian-cepat {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 1.25rem 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Ikon CSS untuk Tombol Pencarian Cepat */
+div[data-testid="column"]:nth-of-type(1) .stButton button[kind="secondary"]::before {
+  content: "\f0f4"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; color: var(--accent-blue);
+}
+div[data-testid="column"]:nth-of-type(2) .stButton button[kind="secondary"]::before {
+  content: "\f2e7"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; color: var(--accent-blue);
+}
+div[data-testid="column"]:nth-of-type(3) .stButton button[kind="secondary"]::before {
+  content: "\f06c"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; color: var(--success);
+}
+div[data-testid="column"]:nth-of-type(4) .stButton button[kind="secondary"]::before {
+  content: "\f7ec"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; color: #fbbf24;
+}
+
+/* --- Hasil --- */
+/* Catatan: Penataan .results-container tidak membungkus kartu secara efektif karena Streamlit
+   merender setiap panggilan st.markdown di div induk terpisah, merusak struktur HTML.
+   Kita harus menengahkan setiap elemen anak (header, kartu) secara individual menggunakan margin: auto. */
+
+.results-header-container {
+  width: 95%;
+  max-width: 820px;
+  margin: 2rem auto 1.5rem auto !important; /* Tengahkan header */
+  text-align: left;
+}
+
+.results-header-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.recommendation-card {
+  width: 95%;
+  max-width: 820px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.75rem 2.25rem; /* Sama persis dengan padding stForm */
+  margin: 0 auto 1rem auto !important; /* Tengahkan kartu */
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.recommendation-card:hover {
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+  transform: translateY(-3px);
+}
+
+.recommendation-card h4 {
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+}
+
+
+.card-match-badge {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.icon-fixed-width {
+  display: inline-block;
+  width: 1.2rem;
+  text-align: center;
+  margin-right: 0.25rem;
+}
+
+
+/* Bagian Footer - RAPAT KE BAWAH */
+.footer-text {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+}
+
+.footer-text a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- PENYESUAIAN LIGHT MODE --- */
+
+/* Hero Icon di Light Mode */
+[data-theme="light"] .hero-icon {
+  background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+}
+
+[data-theme="light"] .hero-icon i {
+  color: #2563eb;
+}
+
+/* Data System Card di Light Mode */
+[data-theme="light"] .data-system-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .data-system-card::before {
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+}
+
+[data-theme="light"] .stat-value {
+  color: var(--text-primary);
+}
+
+/* Bot Avatar di Light Mode */
+[data-theme="light"] .bot-avatar {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+}
+
+/* Tips Card di Light Mode */
+[data-theme="light"] .tips-card {
+  background: rgba(241, 245, 249, 0.5);
+  border: 1px dashed var(--border-color);
+}
+
+/* Input di Light Mode */
+[data-theme="light"] .stTextInput input {
+  background-color: var(--input-bg);
+  border: 1.5px solid var(--border-color) !important;
+  color: var(--text-primary);
+  caret-color: #000000 !important; /* Warna kursor ketik menjadi hitam */
+}
+
+
+/* Placeholder Styling untuk Light Mode */
+[data-theme="light"] .stTextInput input::placeholder {
+  color: #64748b !important; /* Warna Slate-500 (Abu-abu medium) agar terlihat jelas */
+  opacity: 1; /* Firefox fix */
+}
+
+[data-theme="light"] .stTextInput input::-webkit-input-placeholder {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .stTextInput input:-ms-input-placeholder {
+  color: #64748b !important;
+}
+
+
+
+/* Recommendation Card di Light Mode */
+[data-theme="light"] .recommendation-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .recommendation-card:hover {
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
+}
+
+/* Form Container di Light Mode */
+[data-theme="light"] [data-testid="stForm"] {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Quick Search Buttons di Light Mode */
+[data-theme="light"] div[data-testid="element-container"]:has(.quick-search-container) + div[data-testid="stHorizontalBlock"] .stButton button {
+  background-color: #f1f5f9 !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="light"] div[data-testid="element-container"]:has(.quick-search-container) + div[data-testid="stHorizontalBlock"] .stButton button:hover {
+  background-color: rgba(37, 99, 235, 0.1) !important;
+  border-color: var(--accent-blue) !important;
+  color: var(--accent-blue) !important;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2) !important;
+}
+
+/* Load More Button di Light Mode */
+[data-theme="light"] div[data-testid="element-container"]:has(.load-more-wrapper) + div[data-testid="element-container"] .stButton button {
+  background: rgba(241, 245, 249, 0.8) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="light"] div[data-testid="element-container"]:has(.load-more-wrapper) + div[data-testid="element-container"] .stButton button:hover {
+  background: rgba(37, 99, 235, 0.1) !important;
+  border-color: var(--accent-blue) !important;
+  color: var(--accent-blue) !important;
+}
+
+/* Match Badge di Light Mode */
+[data-theme="light"] .card-match-badge {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: white;
+}
+
+/* RESPONSIF */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-container {
+    padding: 1rem 1rem;
+  }
+
+  /* Perbaikan Responsif untuk Tombol Pencarian Cepat (jadi 2 kolom di HP) */
+  div[data-testid="element-container"]:has(.quick-search-container) + div[data-testid="stHorizontalBlock"] {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+
+  div[data-testid="element-container"]:has(.quick-search-container) + div[data-testid="stHorizontalBlock"] div[data-testid="column"] {
+    flex: 1 1 45% !important; /* Paksa jadi 2 kolom (sekitar 50%) */
+    width: 45% !important;
+    min-width: 45% !important;
+    max-width: 50% !important;
+  }
+  
+  /* Sesuaikan ukuran font tombol di mobile */
+  div[data-testid="element-container"]:has(.quick-search-container) + div[data-testid="stHorizontalBlock"] .stButton button {
+     font-size: 0.75rem !important;
+     padding: 0.3rem 0.2rem !important;
+     min-height: 2.5rem !important;
+     white-space: normal !important; /* Izinkan text wrapping jika masih panjang */
+     line-height: 1.2 !important;
+  }
+}
