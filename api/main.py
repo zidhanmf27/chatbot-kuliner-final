@@ -54,6 +54,10 @@ MODEL_PATH = os.path.join("dataset", "chatbot_model.pkl")
 # Helper for CSV Paths
 from database.config import DATA_PATH, PENDING_PATH, LOG_PATH
 
+# Define Base Directory based on this file location
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "dataset", "chatbot_model.pkl")
+
 @app.on_event("startup")
 async def startup_event():
     global engine
