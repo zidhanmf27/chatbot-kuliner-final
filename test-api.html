@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test API Connection</title>
+    
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+      .status {
+        padding: 20px;
+        border-radius: 8px;
+        margin: 10px 0;
+      }
+      .success {
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+      }
+      .error {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      pre {
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🔌 Test Koneksi API Chatbot</h1>
+
+    <button onclick="testAPI()">Test Koneksi ke API</button>
+
+    <div id="result"></div>
+<script src="http://localhost:8000/widget.js"></script>
+    <script>
+      const API_URL = "http://localhost:8000";
+
+      async function testAPI() {
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = '<div class="status">⏳ Menghubungi API...</div>';
+
+        try {
+          // Test 1: Health Check
+          const response = await fetch(`${API_URL}/status`);
+          const data = await response.json();
+
+          if (response.ok) {
+            resultDiv.innerHTML = `
+                        <div class="status success">
+                            <h3>✅ Koneksi Berhasil!</h3>
+                            <p><strong>Status:</strong> ${data.status}</p>
+                            <p><strong>Total UMKM:</strong> ${data.total_umkm}</p>
+                            <p><strong>Model Loaded:</strong> ${data.model_loaded}</p>
+                        </div>
+                    `;
+
+            // Test 2: Chat Endpoint
+            testChat();
+          } else {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+        } catch (error) {
+          resultDiv.innerHTML = `
+                    <div class="status error">
+                        <h3>❌ Koneksi Gagal</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p><strong>Kemungkinan Penyebab:</strong></p>
+                        <ul>
+                            <li>API server belum berjalan (jalankan: <code>uvicorn api.main:app --host 0.0.0.0 --port 8000</code>)</li>
+                            <li>Port 8000 diblokir oleh firewall</li>
+                            <li>CORS issue (sudah dihandle di backend)</li>
+                        </ul>
+                    </div>
+                `;
+        }
+      }
+
+      async function testChat() {
+        const resultDiv = document.getElementById("result");
+
+        try {
+          const response = await fetch(`${API_URL}/chat`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              query: "kopi murah di dago",
+              top_n: 5,
+            }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            resultDiv.innerHTML += `
+                        <div class="status success">
+                            <h3>✅ Chat Endpoint Berhasil!</h3>
+                            <p><strong>Query:</strong> ${data.query}</p>
+                            <p><strong>Corrected Query:</strong> ${data.corrected_query}</p>
+                            <p><strong>Total Rekomendasi:</strong> ${data.recommendations.length}</p>
+                            <details>
+                                <summary>Lihat Response Detail</summary>
+                                <pre>${JSON.stringify(data, null, 2)}</pre>
+                            </details>
+                        </div>
+                    `;
+          } else {
+            throw new Error(`Chat endpoint failed: ${response.status}`);
+          }
+        } catch (error) {
+          resultDiv.innerHTML += `
+                    <div class="status error">
+                        <h3>⚠️ Chat Endpoint Error</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+        }
+      }
+
+      // Auto-test on load
+      window.addEventListener("load", () => {
+        setTimeout(testAPI, 500);
+      });
+    </script>
+  </body>
+</html>

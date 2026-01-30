@@ -1,0 +1,44 @@
+2026-01-30 21:10:07,756 - [INFO] - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-30 21:10:07,756 - [INFO] - Scheduler Service (CSV Mode) dimulai. Menunggu jadwal...
+2026-01-30 21:10:07,758 - [INFO] - Added job "process_pending_data" to job store "default"
+2026-01-30 21:10:07,758 - [INFO] - Scheduler started
+2026-01-30 21:24:11,318 - [INFO] - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-30 21:24:11,318 - [INFO] - Scheduler Service (CSV Mode) dimulai. Menunggu jadwal...
+2026-01-30 21:24:11,318 - [INFO] - Added job "process_pending_data" to job store "default"
+2026-01-30 21:24:11,318 - [INFO] - Scheduler started
+2026-01-30 21:25:00,018 - [INFO] - Running job "process_pending_data (trigger: cron[hour='21', minute='25'], next run at: 2026-01-30 21:25:00 +07)" (scheduled at 2026-01-30 21:25:00+07:00)
+2026-01-30 21:25:00,018 - [INFO] - Memulai proses: Pendaftaran Pending (Mode CSV)
+2026-01-30 21:25:00,027 - [INFO] - Ditemukan 2 pendaftaran pending.
+2026-01-30 21:25:01,051 - [INFO] - Berhasil menambahkan 2 data ke dataset utama.
+2026-01-30 21:25:01,052 - [INFO] - Status pendaftaran diperbarui menjadi 'approved'.
+2026-01-30 21:25:01,052 - [INFO] - Rebuild model chatbot...
+2026-01-30 21:25:01,197 - [INFO] - Model berhasil di-rebuild.
+2026-01-30 21:25:01,198 - [INFO] - Job "process_pending_data (trigger: cron[hour='21', minute='25'], next run at: 2026-01-31 21:25:00 +07)" executed successfully
+2026-01-30 21:25:40,245 - [INFO] - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-30 21:25:40,245 - [INFO] - Scheduler Service (CSV Mode) dimulai. Menunggu jadwal...
+2026-01-30 21:25:40,248 - [INFO] - Added job "process_pending_data" to job store "default"
+2026-01-30 21:25:40,248 - [INFO] - Scheduler started
+2026-01-30 21:25:45,016 - [INFO] - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-30 21:25:45,016 - [INFO] - Scheduler Service (CSV Mode) dimulai. Menunggu jadwal...
+2026-01-30 21:25:45,017 - [INFO] - Added job "process_pending_data" to job store "default"
+2026-01-30 21:25:45,018 - [INFO] - Scheduler started
+2026-01-30 21:27:00,009 - [INFO] - Running job "process_pending_data (trigger: cron[hour='21', minute='27'], next run at: 2026-01-30 21:27:00 +07)" (scheduled at 2026-01-30 21:27:00+07:00)
+2026-01-30 21:27:00,009 - [INFO] - Running job "process_pending_data (trigger: cron[hour='21', minute='27'], next run at: 2026-01-30 21:27:00 +07)" (scheduled at 2026-01-30 21:27:00+07:00)
+2026-01-30 21:27:00,010 - [INFO] - Memulai proses: Pendaftaran Pending (Mode CSV)
+2026-01-30 21:27:00,012 - [INFO] - Memulai proses: Pendaftaran Pending (Mode CSV)
+2026-01-30 21:27:00,059 - [INFO] - Tidak ada data dengan status 'pending'.
+2026-01-30 21:27:00,059 - [INFO] - Tidak ada data dengan status 'pending'.
+2026-01-30 21:27:00,059 - [INFO] - Job "process_pending_data (trigger: cron[hour='21', minute='27'], next run at: 2026-01-31 21:27:00 +07)" executed successfully
+2026-01-30 21:27:00,059 - [INFO] - Job "process_pending_data (trigger: cron[hour='21', minute='27'], next run at: 2026-01-31 21:27:00 +07)" executed successfully
+2026-01-30 21:43:02,247 - [INFO] - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-30 21:43:02,248 - [INFO] - Scheduler Service (CSV Mode) dimulai. Menunggu jadwal...
+2026-01-30 21:43:02,250 - [INFO] - Added job "process_pending_data" to job store "default"
+2026-01-30 21:43:02,250 - [INFO] - Scheduler started
+2026-01-30 21:43:06,690 - [INFO] - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-30 21:43:06,691 - [INFO] - Scheduler Service (CSV Mode) dimulai. Menunggu jadwal...
+2026-01-30 21:43:06,692 - [INFO] - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-01-30 21:43:06,692 - [INFO] - Added job "process_pending_data" to job store "default"
+2026-01-30 21:43:06,692 - [INFO] - Scheduler started
+2026-01-30 21:43:06,692 - [INFO] - Scheduler Service (CSV Mode) dimulai. Menunggu jadwal...
+2026-01-30 21:43:06,694 - [INFO] - Added job "process_pending_data" to job store "default"
+2026-01-30 21:43:06,694 - [INFO] - Scheduler started

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Demo Widget</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        text-align: center;
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+      }
+      h1 {
+        color: #2d3748;
+      }
+      p {
+        color: #4a5568;
+        line-height: 1.6;
+      }
+      .code-box {
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        text-align: left;
+        font-family: monospace;
+        margin: 1rem 0;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Website Demo Baru</h1>
+      <p>Ini adalah contoh website kosong yang seolah-olah milik orang lain.</p>
+      <p>
+        Lihat di pojok kanan bawah! Widget Chatbot muncul otomatis hanya dengan
+        1 baris kode.
+      </p>
+
+      <div class="code-box">
+        &lt;script src="http://localhost:8000/widget.js"&gt;&lt;/script&gt;
+      </div>
+
+      <p>Cobalah berinteraksi dengan chatbot tersebut sekarang.</p>
+    </div>
+
+    <!-- MAGIC SCRIPT: Hanya ini yang dibutuhkan! -->
+    <script src="http://localhost:8000/widget.js"></script>
+  </body>
+</html>
